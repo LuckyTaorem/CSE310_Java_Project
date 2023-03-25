@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.luckytaorem.quiz_application;
+ package com.luckytaorem.quiz_application;
 //import java.awt.event.*;
 import javax.swing.*;
 /**
