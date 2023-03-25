@@ -11,25 +11,38 @@ package com.luckytaorem.quiz_application;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class CSE211 extends JFrame implements ActionListener{
     static JFrame frame;
     static JLabel label,timeleft;
     static JButton button;
-    private JLabel timerLabel;
-    private int secondsRemaining;
-    JRadioButton radioButtons[] = new JRadioButton[5];
-    JButton btnNext,btnResult;
-    ButtonGroup bg;
-    int count = 0, wcount=0, current = 0, x=1,y=1,now=0;
-    int m[]= new int[10];
+    JLabel timerLabel, resultLabel;
+    JTextArea questionLabel;
+    int secondsRemaining;
+    JRadioButton option1, option2, option3, option4;
+    JButton nextButton, resultButton;
+    int score = 0;
+    int questionIndex = 0;
+    ArrayList<Integer> questionOrder = new ArrayList<Integer>();
+    String[][] questions = {
+        {"Register A:1100 Register B:1010 After applying Selective-Set on the given data, value of register A is:", "1001", "1110", "1011", "1111"},
+        {"A digital system has a common bus system for 16 registers of 32 bits each. If the bus constructed using multiplexers, then how many multiplexers are there in the bus?", "8", "16", "32", "64"},
+        {"Mask logic micro-operation implements which of the following logic gate?", "OR", "AND", "XOR", "NAND"},
+        {"Binary adder is constructed using?","4 bit Adder","Half adder","Full adder","Sequential circuit"},
+        {"The number of bits in the opcode are dependent on:","Total number of words","Number of bits in a word","Total number of addresses","Total number of operations"},
+        {"A group of bits that instructs the computer to perform a specific operation is known as:","Instruction Code","Operation Code","Addressing Mode","None"},
+        {"Which type of instruction is represented by the op-code 0111?","Memory Reference Instruction","Register Reference Instruction","Input-Output Instruction","None of These"},
+        {"Which register is used to store the results of any operation?","AR","AC","TR","DR"},
+        {"By what timing signal the Memory-Reference Instructions are executed?","T3","T4","T2","T5"},
+        {"A computer with large number of instructions is classified as:","RISC","CISC","Pipeline","None"}
+    };
     Timer timer;
     
-    public CSE211(String s){
-        super(s);
-        label = new JLabel();
+    public CSE211(){
+        setTitle("Test for CSE211");
         startTimer();
-        add(label);
         timeleft = new JLabel("Time Left:");
         timeleft.setForeground(Color.RED);
         timeleft.setFont(new Font("Arial", Font.BOLD, 24));
@@ -40,66 +53,65 @@ public class CSE211 extends JFrame implements ActionListener{
         timerLabel.setBounds(750,30,100,50);
         add(timeleft);
         add(timerLabel);
-       
-        bg = new ButtonGroup();
-        for(int i=0;i<5;i++){
-            radioButtons[i]= new JRadioButton();
-            add(radioButtons[i]);
-            bg.add(radioButtons[i]);
-                       
-        }
-        btnNext = new JButton("Next");
-        btnResult = new JButton("Result");
-        btnResult.setVisible(false);
-        btnResult.addActionListener(this);
-        btnNext.addActionListener(this);
-        add(btnNext);
-        add(btnResult);
-        setData();
-        label.setFont(new Font("Arial",Font.BOLD,24));
-        label.setBounds(30,40,450,20);
-        radioButtons[0].setBounds(50,80,450,20);
-        radioButtons[1].setBounds(50,110,200,20);
-        radioButtons[2].setBounds(50,140,200,20);
-        radioButtons[3].setBounds(50,170,200,20);
-        btnNext.setBounds(100,240,100,30);
-        btnResult.setBounds(270,240,100,30);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
+        
+        for (int i = 0; i < questions.length; i++) {
+            questionOrder.add(i);
+        }
+        Collections.shuffle(questionOrder);
+        
+        // Add the question label
+        questionLabel = new JTextArea(questions[questionOrder.get(questionIndex)][0]);
+//        questionLabel = new JTextArea(questions[questionIndex][0]);
+        add(questionLabel);
+        questionLabel.setFont(new Font("Arial",Font.BOLD,24));
+        questionLabel.setEditable(false);
+        questionLabel.setLineWrap(true);
+        questionLabel.setWrapStyleWord(true);
+        questionLabel.setBackground(null);
+        questionLabel.setBounds(50,80,1200,50);
+        
+        // Add the answer options
+        option1 = new JRadioButton(questions[questionOrder.get(questionIndex)][1]);
+        option2 = new JRadioButton(questions[questionOrder.get(questionIndex)][2]);
+        option3 = new JRadioButton(questions[questionOrder.get(questionIndex)][3]);
+        option4 = new JRadioButton(questions[questionOrder.get(questionIndex)][4]);
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(option1);
+        group.add(option2);
+        group.add(option3);
+        group.add(option4);
+        add(option1);
+        add(option2);
+        add(option3);
+        add(option4);
+        
+        option1.setFont(new Font("Arial",Font.BOLD,24));
+        option2.setFont(new Font("Arial",Font.BOLD,24));
+        option3.setFont(new Font("Arial",Font.BOLD,24));
+        option4.setFont(new Font("Arial",Font.BOLD,24));
+        
+        option1.setBounds(50,200,1000,20);
+        option2.setBounds(50,250,1000,20);
+        option3.setBounds(50,300,1000,20);
+        option4.setBounds(50,350,1000,20);
+        
+        // Add the submit and reset buttons
+        nextButton = new JButton("Next");
+        resultButton = new JButton("See Result");
+        nextButton.addActionListener(this);
+        resultButton.addActionListener(this);
+        add(nextButton);
+        add(resultButton);
+        resultButton.setVisible(false);
+        nextButton.setFont(new Font("Arial",Font.BOLD,24));
+        resultButton.setFont(new Font("Arial",Font.BOLD,24));
+        nextButton.setBounds(50,400,100,60);
+        resultButton.setBounds(50,400,300,60);
         setVisible(true);
         setSize(1980,1080);
-    }
-    
-    void setData(){
-        radioButtons[4].setSelected(true);
-        if(current==0){
-            label.setText("Question 1: Correct Radio Button is A");
-            radioButtons[0].setText("A");
-            radioButtons[1].setText("B");
-            radioButtons[2].setText("C");
-            radioButtons[3].setText("D");
-        }
-        if(current==1){
-            label.setText("Question 2: Correct Radio Button is B");
-            radioButtons[0].setText("A");
-            radioButtons[1].setText("B");
-            radioButtons[2].setText("C");
-            radioButtons[3].setText("D");
-        }
-        label.setBounds(30,40,450,20);
-        for(int i=0,j=0;i<=90;i+=30,j++){
-            radioButtons[j].setBounds(50,80+i,200,20);
-        }
-    }
-    
-        boolean checkAns(){
-        if(current==0){
-            return(radioButtons[0].isSelected());
-        }
-        if(current==1){
-            return(radioButtons[1].isSelected());
-        }
-        return false;
     }
     
     public static void quiz(){
@@ -119,7 +131,7 @@ public class CSE211 extends JFrame implements ActionListener{
         button.addActionListener((ActionEvent e) -> {
             frame.setVisible(false);
 //            startTimer();
-            new CSE211("Test for CSE211");
+            new CSE211();
         });
         label.setBounds(100,50,1980,200);
         button.setBounds(100,250,100,50);
@@ -132,24 +144,6 @@ public class CSE211 extends JFrame implements ActionListener{
         frame.setLayout(null);
         frame.setVisible(true);
     }
-//    public void run(){
-//        frame = new JFrame();
-//        label = new JLabel();
-//        startTimer();
-//        frame.add(label);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setLayout(new FlowLayout());
-//        timeleft = new JLabel("Time Left:");
-//        timeleft.setForeground(Color.RED);
-//        timeleft.setFont(new Font("Arial", Font.BOLD, 24));
-//        timerLabel = new JLabel("30:00");
-//        timerLabel.setForeground(Color.RED);
-//        timerLabel.setFont(new Font("Arial", Font.BOLD, 24));
-//        frame.add(timeleft);
-//        frame.add(timerLabel);
-//        frame.setVisible(true);
-//        frame.setSize(1980,1080);
-//    }
     
     private void startTimer() {
         secondsRemaining = 1200;
@@ -162,7 +156,8 @@ public class CSE211 extends JFrame implements ActionListener{
             } else {
                 timer.stop();
                 timerLabel.setText("Time Up");
-                
+                JOptionPane.showMessageDialog(this,"Correct Answer are "+score);
+                System.exit(0);
             }
         });
 
@@ -171,31 +166,75 @@ public class CSE211 extends JFrame implements ActionListener{
     
     public static void main(String[] cse211){
         quiz();
-//        new CSE211("test");
     }
     
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==btnNext){
-            if(checkAns())
-                count = count +1;
-            if(!checkAns())
-                wcount +=1;
-               current++;
-               setData();
-                if(current==1){
-                    btnNext.setEnabled(false);
-                    btnResult.setVisible(true);
-                    btnResult.setText("Result");
-                }
-        }
+        if (e.getSource() == nextButton) {
+            // Check the answer
+            if(option1.isSelected() && option1.getText().equals("")){
+                score++;
+            }
+            if(option2.isSelected() && option2.getText().equals("1110")||
+                    option2.getText().equals("AND")||
+                    option2.getText().equals("Operation Code")||
+                    option2.getText().equals("Register Reference Instruction")||
+                    option2.getText().equals("AC")||
+                    option2.getText().equals("T4")||
+                    option2.getText().equals("CISC")){
+                score++;
+            }
+            if(option3.isSelected() && option3.getText().equals("32")||
+                    option3.getText().equals("Full adder")){
+                score++;
+            }
+            if(option4.isSelected() && option4.getText().equals("Total number of operations")){
+                score++;
+            }
             
-            if(e.getActionCommand().equals("Result")){
-                if(checkAns())
-                    count = count +1;
-                   current++;
-                   timer.stop();
-                   JOptionPane.showMessageDialog(this,"Correct Answer are "+count+"\nWrong Answer are "+wcount);
-                   System.exit(0);
+            // Move to the next question
+            questionIndex++;
+            if(questionIndex >= questions.length-1){
+                questionLabel.setText(questions[questionOrder.get(questionIndex)][0]);
+                option1.setText(questions[questionOrder.get(questionIndex)][1]);
+                option2.setText(questions[questionOrder.get(questionIndex)][2]);
+                option3.setText(questions[questionOrder.get(questionIndex)][3]);
+                option4.setText(questions[questionOrder.get(questionIndex)][4]);
+                nextButton.setVisible(false);
+                resultButton.setVisible(true);
+            }else {
+                // Set up the next question
+                questionLabel.setText(questions[questionOrder.get(questionIndex)][0]);
+                option1.setText(questions[questionOrder.get(questionIndex)][1]);
+                option2.setText(questions[questionOrder.get(questionIndex)][2]);
+                option3.setText(questions[questionOrder.get(questionIndex)][3]);
+                option4.setText(questions[questionOrder.get(questionIndex)][4]);
+            }
+        }else if(e.getSource() == resultButton){
+            if (option1.isSelected() && option1.getText().equals(questions[questionIndex][1])) {
+                score++;
+            }
+            if (option2.isSelected() && option2.getText().equals(questions[questionIndex][1])) {
+                score++;
+            }
+            if (option3.isSelected() && option3.getText().equals(questions[questionIndex][1])) {
+                score++;
+            }
+            if (option4.isSelected() && option4.getText().equals(questions[questionIndex][1])) {
+                score++;
+            }
+                // Quiz is over
+                timer.stop();
+                option1.setEnabled(false);
+                option2.setEnabled(false);
+                option3.setEnabled(false);
+                option4.setEnabled(false);
+                nextButton.setEnabled(false);
+                resultButton.setEnabled(false);
+                JOptionPane.showMessageDialog(this,"Correct Answer are "+score);
+                System.exit(0);
+            
         }
     }
 }
+            
+   
