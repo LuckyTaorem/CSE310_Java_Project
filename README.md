@@ -3,8 +3,10 @@ Group Class Java Project
 Welcome to the CSE310_Java_Project wiki! We are developing a simple Quiz application using java as we are a beginner in java, it will take some time to implement some of the functions ans features that we want to add in the application but as time goes on we will add more function to it.
 
 Functions we want to add:
-1. Time Limit
-2. more Upcoming :)
+1. Time Limit ✅
+2. more subjects
+3. levels of difficulty
+4. more coming.
 
 
 
