@@ -5,7 +5,7 @@ Welcome to the CSE310_Java_Project wiki! We are developing a simple Quiz applica
 Functions we want to add:
 1. Time Limit ✅
 2. more subjects
-3. levels of difficulty
+3. levels of difficulty✅
 4. more coming.
 
 
