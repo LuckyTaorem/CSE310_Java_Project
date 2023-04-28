@@ -14,7 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class CSE211 extends JFrame implements ActionListener{
+public class CSE316 extends JFrame implements ActionListener{
     static JFrame frame;
     static JLabel label,timeleft;
     static JButton button;
@@ -30,48 +30,49 @@ public class CSE211 extends JFrame implements ActionListener{
     ArrayList<Integer> questionOrder2 = new ArrayList<Integer>();
     ArrayList<Integer> questionOrder3 = new ArrayList<Integer>();
     String[][] questions = {
-        {"Register A:1100 Register B:1010 After applying Selective-Set on the given data, value of register A is:","1110", "1001", "1110", "1011", "1111"},
-        {"A digital system has a common bus system for 16 registers of 32 bits each. If the bus constructed using multiplexers, then how many multiplexers are there in the bus?","32", "8", "16", "32", "64"},
-        {"Mask logic micro-operation implements which of the following logic gate?", "AND" ,"OR", "AND", "XOR", "NAND"},
-        {"Binary adder is constructed using?","Full adder","4 bit Adder","Half adder","Full adder","Sequential circuit"},
-        {"The number of bits in the opcode are dependent on:","Total number of operations","Total number of words","Number of bits in a word","Total number of addresses","Total number of operations"},
-        {"A group of bits that instructs the computer to perform a specific operation is known as:","Operation Code","Instruction Code","Operation Code","Addressing Mode","None"},
-        {"Which type of instruction is represented by the op-code 0111?","Register Reference Instruction","Memory Reference Instruction","Register Reference Instruction","Input-Output Instruction","None of These"},
-        {"Which register is used to store the results of any operation?","AC","AR","AC","TR","DR"},
-        {"By what timing signal the Memory-Reference Instructions are executed?","T4","T3","T4","T2","T5"},
-        {"A computer with large number of instructions is classified as:","CISC","RISC","CISC","Pipeline","None"}
+        {"Which of the following are CPU scheduling algorithms?","All of the above", "Priority scheduling", "Round Robin", "Shortest Job First", "All od the above"},
+        {"Operating Systems","Provides a layer so as to act as a user-friendly interface that enables the programmer to draw a flow chart", "Provides a layer so as to act as a user-friendly interface that enables the programmer to draw a flow chart", "Links the program with subroutines", "Helps to create a flow chart of the programs", "All of these"},
+        {"A process which is copied from main memory to secondary memory on the basis of requirement is known as ", "Demand Paging" ,"Demand Paging", "Paging", "Threads", "Segmentation"},
+        {"FIFO scheduling is a type of:","Non-Pre-emptive scheduling","Pre-emptive scheduling","Deadline scheduling","Non-Pre-emptive scheduling","None of the above"},
+        {"Which of the type of OS reads and reacts in terms of actual time?","Real time OS","Quick sharing OS","Real time OS","Batch OS"},
+        {"A systematic procedure for moving the CPU to new process is known as-","Context Switching","Synchronization","Deadlock","Starvation","Context Switching"},
+        {"UNIX is written in which language?","C","c++","C","C#",".NET"},
+        {"Thread is a","Light weight process","Light weight process","Heavy weight process","Multi process","I/O process"},
+        {"OS classifies the threads as-","Kernal and User level","Mainframe and motherboard level","Kernal and User level","Security and Memory level","OS and CPU level"},
+        {"Among the following CPU scheduling algorithms, which of these allocated the CPU first to the process that requests the CPU first?","FCFS","FCFS","SJF","Priority scheduling","None"}
     };
     
     String[][] Medium_questions = {
-        {"What is the purpose of the instruction register (IR)?","B. To store the current instruction being executed","A. To store the memory address of the current instruction","B. To store the current instruction being executed","C. To store the data value of the current instruction","D. To store the memory address of the next instruction"},
-        {"Which of the following is NOT a characteristic of a RISC processor?","B. Fixed-length instructions","A. Simple instructions","B. Fixed-length instructions","B. Fixed-length instructions","D. Hardwired control"},
-        {"Which type of memory is the fastest?","Cache memory","Cache memory","Virtual memory","Secondary memory","ROM"},
-        {"What is the purpose of a memory controller?","To manage the flow of data between the CPU and the memory","To manage the flow of data between the CPU and the memory","To manage the flow of data between the input/output devices and the memory","To manage the flow of data between the CPU and the input/output devices","To manage the flow of data between the input/output devices and the CPU"},
-        {"Which of the following is NOT a component of the CPU?","Input/output unit (IOU)","Arithmetic logic unit (ALU)","Control unit (CU)","Input/output unit (IOU)","Registers"},
-        {"Which of the following is an example of a pipelined processor?","Pentium III","Pentium III","Motorola 68000","ARM Cortex-A9","ARM Cortex-A9"},
-        {"Which of the following is NOT a characteristic of a superscalar processor?","Single-issue instructions","Out-of-order execution","Out-of-order execution","Dynamic instruction scheduling","Single-issue instructions"},
-        {"What is the purpose of the memory hierarchy?","To provide a balance between fast and slow storage","To provide a small amount of slow storage","To provide a small amount of slow storage","To provide a balance between fast and slow storage","To provide a large amount of slow storage"},
-        {"Which of the following is a characteristic of a Harvard architecture?","The CPU and memory have separate buses","The CPU and memory share the same bus","The CPU and memory have separate buses","The CPU has multiple cores","The CPU has a large cache"},
-        {"Which of the following is a type of interrupt that occurs when a program executes an illegal instruction or attempts to access an invalid memory address?","Exceptions","Hardware interrupt","Software interrupt","Traps","Exceptions"}
+        {"What are the two types of operating modes of AT?","Real mode","Virtual mode, dedicated mode","Private mode, public mode","Real mode, protected mode","Direct mode, indirect mode"},
+        {"Which of the following schedules threads?","Operating system","Virtual memory","Operating system","CPU","Input"},
+        {"What is meant by ready state of a process?","None of these","When the process is scheduled to run after some execution","When the process currently using the CPU","When the process is dependent of the execution time of some other process","None of these"},
+        {"Among the following, which is an example of a spooled device?","A line printer that prints the output of a number of jobs","A line printer that prints the output of a number of jobs","A terminal that inputs user data","A I/O device to display graphics","None"},
+        {"Main memory of a computer system is?","Volatile","Non-volatile","Volatile","Restricted","Unrestricted"},
+        {"For which of the following purposes in Banker’s algorithm is used?","Preventing deadlock","Preventing deadlock","Solving deadlock","Recover from deadlock","None"},
+        {"Device driver required in?","Disk","Register","Main memory","Disk","Cache"},
+        {"When are the register context and stack of thread deallocated?","when the thread terminates","when the thread terminates","when the thread blocks","when the thread unblocks","when the thread spawns"},
+        {"Threads is not shared among which of the following?","both program counter and stack","stack","program counter","both program counter and stack","none"},
+        {"For which of the following is the jacketing technique used?","converting a blocking system call in non blocking system call","to construct a new thread","to communicate between threads","converting a blocking system call in non blocking system call","None"}
     };
     
     String[][] Hard_questions = {
-        {"Which of the following is NOT a common technique for reducing instruction execution time?","D) Interrupts","A) Pipelining","B) Instruction-level parallelism","C) Speculative execution","D) Interrupts"},
-        {"Which of the following is NOT a characteristic of a RISC processor?","B) Complex addressing modes","A) Fixed-length instruction format","B) Complex addressing modes","C) Simple instructions","D) Large register file"},
-        {"In a two-level cache hierarchy, which cache is typically smaller and faster?","B) L2 cache","A) L1 cache","B) L2 cache","C) Main memory","D) Virtual memory"},
-        {"Which of the following is NOT a common addressing mode in a processor's instruction set?","C) Indirect with displacement","A) Immediate","B) Direct","C) Indirect with displacement","D) Indirect with index"},
-        {"Which of the following is a potential hazard in pipelined processors?","D) All of the above","A) Resource hazards","B) Structural hazards","C) Data hazards","D) All of the above"},
-        {"What is the purpose of the branch target buffer (BTB) in a processor?","A) To predict the target address of a conditional branch instruction","A) To predict the target address of a conditional branch instruction","B) To store the address of the next instruction to be fetched","C) To buffer the result of an ALU operation","D) To store recently used instructions"},
-        {"Which of the following is NOT a component of a typical instruction execution cycle?","C) Writeback","A) Fetch","B) Decode","C) Writeback","D) Execute"},
-        {"Which of the following cache replacement policies is least likely to cause thrashing?","B) Random","A) Least Recently Used (LRU)","B) Random","C) First-In First-Out (FIFO)","D) Most Recently Used (MRU)"},
-        {"What is the purpose of the translation lookaside buffer (TLB) in a computer system?","C) To map virtual addresses to physical addresses","A) To store recently used data","B) To store recently used instructions","C) To map virtual addresses to physical addresses","D) To buffer data in between the processor and memory"},
-        {"Which of the following is a potential advantage of using SIMD instructions?","D) All of the above","A) Increased parallelism","B) Reduced instruction count","C) Improved cache utilization","D) All of the above"}
-    };
+        {"For which of the following is resource sharing used?","All of the mentioned","an application having several threads of activity all within the same address space","share the memory and resources","Compress the address space","All of the mentioned"},
+        {"Many to One model is at an advantage in which of the following conditions?","When the program does not need multithreading","When the program needs to be multi-threaded","When there is a single processor present","When the program does not need multithreading","None"},
+        {"Identify the system calls that on termination does not return control to the calling point.","exec","exec","fork","longjmp","ioctl"},
+        {"Consider the following program:\nmain()\n{\n     if(fork()>0)\nsleep(100);\n}","zombie process","infinite process","orphan process","zombie process","none"},
+        {"The output of the following C program is?\nint main(){\n	fork();\n    fork();\n    printf('code');\n}","code code code code","code code code code","code code code","code code","code"},
+        {"Identify the call which never returns an error?","getpid","fork","getpid","ioctl","open"},
+        {"What of the following defines Thread cancellation?","The process of terminating a thread process before its execution","The process of terminating a thread process before its execution","The process of removing a thread after its work is executed","The process of destroying the thread after its work is executed","none"},
+        {"When a thread terminates some target thread immediately, it is known as?","Asynchronous termination","Immediate Termination","Asynchronous termination","Synchronous termination","Deferred cancellation"},
+        {"Signals of some given type are","sent together","sent together","queued","stacked","none"},
+        {"Which of the following commands in UNIX is used to send a signal?","Kill","send","Kill","sigsend","none"}
+};
+
     
     Timer timer;
     
-    public CSE211(){
-        setTitle("Test for CSE211");
+    public CSE316(){
+        setTitle("Test for CSE316");
         dlabel = new JLabel("Easy");
         dlabel.setForeground(Color.green);
         dlabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -109,13 +110,16 @@ public class CSE211 extends JFrame implements ActionListener{
         
         // Add the question label
         questionLabel = new JTextArea(questions[questionOrder.get(questionIndex)][0]);
-        add(questionLabel);
+//        add(questionLabel);
+        JScrollPane jsp = new JScrollPane(questionLabel);
+        add(jsp);
+        
         questionLabel.setFont(new Font("Arial",Font.BOLD,24));
         questionLabel.setEditable(false);
         questionLabel.setLineWrap(true);
         questionLabel.setWrapStyleWord(true);
         questionLabel.setBackground(null);
-        questionLabel.setBounds(50,80,1200,50);
+        jsp.setBounds(50,80,1400,200);
         
         // Add the answer options
         option1 = new JRadioButton(questions[questionOrder.get(questionIndex)][2]);
@@ -138,10 +142,10 @@ public class CSE211 extends JFrame implements ActionListener{
         option3.setFont(new Font("Arial",Font.BOLD,24));
         option4.setFont(new Font("Arial",Font.BOLD,24));
         
-        option1.setBounds(50,200,1000,30);
-        option2.setBounds(50,270,1000,30);
-        option3.setBounds(50,340,1000,30);
-        option4.setBounds(50,410,1000,30);
+        option1.setBounds(50,350,1000,30);
+        option2.setBounds(50,420,1000,30);
+        option3.setBounds(50,490,1000,30);
+        option4.setBounds(50,560,1000,30);
         
         // Add the submit and reset buttons
         nextButton = new JButton("Next");
@@ -149,19 +153,24 @@ public class CSE211 extends JFrame implements ActionListener{
         nextButton.addActionListener(this);
         resultButton.addActionListener(this);
         
+        dlabel = new JLabel("Easy");
+//        dlabel.setBackground(Color.green);
+//        dlabel.setBounds(500,60,150,50);
+        add(dlabel);
+        
         add(nextButton);
         add(resultButton);
         resultButton.setVisible(false);
         nextButton.setFont(new Font("Arial",Font.BOLD,24));
         resultButton.setFont(new Font("Arial",Font.BOLD,24));
-        nextButton.setBounds(50,480,100,60);
-        resultButton.setBounds(50,480,300,60);
+        nextButton.setBounds(50,630,100,60);
+        resultButton.setBounds(50,630,300,60);
         setVisible(true);
         setSize(1980,1080);
     }
     
     public static void quiz(){
-        frame = new JFrame("Test for CSE211");
+        frame = new JFrame("Test for CSE316");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         label = new JLabel("<html>"
                 + "There will be 10 Questions"
@@ -176,7 +185,7 @@ public class CSE211 extends JFrame implements ActionListener{
         button = new JButton("Next");
         button.addActionListener((ActionEvent e) -> {
             frame.setVisible(false);
-            new CSE211();
+            new CSE316();
         });
         label.setBounds(100,50,1980,200);
         button.setBounds(100,250,100,50);

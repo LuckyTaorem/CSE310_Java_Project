@@ -14,7 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class CSE211 extends JFrame implements ActionListener{
+public class CSE408 extends JFrame implements ActionListener{
     static JFrame frame;
     static JLabel label,timeleft;
     static JButton button;
@@ -30,49 +30,49 @@ public class CSE211 extends JFrame implements ActionListener{
     ArrayList<Integer> questionOrder2 = new ArrayList<Integer>();
     ArrayList<Integer> questionOrder3 = new ArrayList<Integer>();
     String[][] questions = {
-        {"Register A:1100 Register B:1010 After applying Selective-Set on the given data, value of register A is:","1110", "1001", "1110", "1011", "1111"},
-        {"A digital system has a common bus system for 16 registers of 32 bits each. If the bus constructed using multiplexers, then how many multiplexers are there in the bus?","32", "8", "16", "32", "64"},
-        {"Mask logic micro-operation implements which of the following logic gate?", "AND" ,"OR", "AND", "XOR", "NAND"},
-        {"Binary adder is constructed using?","Full adder","4 bit Adder","Half adder","Full adder","Sequential circuit"},
-        {"The number of bits in the opcode are dependent on:","Total number of operations","Total number of words","Number of bits in a word","Total number of addresses","Total number of operations"},
-        {"A group of bits that instructs the computer to perform a specific operation is known as:","Operation Code","Instruction Code","Operation Code","Addressing Mode","None"},
-        {"Which type of instruction is represented by the op-code 0111?","Register Reference Instruction","Memory Reference Instruction","Register Reference Instruction","Input-Output Instruction","None of These"},
-        {"Which register is used to store the results of any operation?","AC","AR","AC","TR","DR"},
-        {"By what timing signal the Memory-Reference Instructions are executed?","T4","T3","T4","T2","T5"},
-        {"A computer with large number of instructions is classified as:","CISC","RISC","CISC","Pipeline","None"}
+        {"Dijkstra’s algorithm is used to solve __________  problems?","Single source shortest path", "Network lock", "Single source shortest path", "All pair shortest path", "Sorting"},
+        {"The Bellmann Ford Algorithm returns __________  value?","Boolean", "String", "Boolean", "Double", "Integer"},
+        {"Which of the following is used for solving the N Queens Problem?", "Backtracking" ,"Greedy algorithm", "Dynamic programming", "Backtracking", "Sorting"},
+        {"Which of the following statements is true about AVL Trees?","All of the above","The difference between the heights of left and right nodes cannot be more than one","The height of an AVL Tree always remains of the order of O(logn)","AVL Trees are a type of self-balancing Binary Search Trees","All of the above"},
+        {"Representation of data structure in memory is known as?","Abstract Data Type","Storage structure","File structure","Recursive","Abstract Data Type"},
+        {"In what time complexity can we find the diameter of a binary tree optimally?","O(V+E)","O(V+E)","O(V)","O(E)","O(V*logE)"},
+        {"To main measures of the efficiency of an algorithm are?","Time and space complexity","Time and space complexity","Data and Space","Processor and memory","Complexity and capacity"},
+        {"Which of the following sorting algorithms provide the best time complexity in the worst-case scenario?","Merge sort","Merge sort","Quick Sort","Bubble Sort","Selection Sort"},
+        {"Which of the following is a Divide and Conquer algorithm?","Merge Sort","Merge Sort","Bubble Sort","Heap Sort","Merge Sort"},
+        {"Which of the following data structure is used to perform recursion?","Queue","Linked List","Array","Queue","Stack"}
     };
     
     String[][] Medium_questions = {
-        {"What is the purpose of the instruction register (IR)?","B. To store the current instruction being executed","A. To store the memory address of the current instruction","B. To store the current instruction being executed","C. To store the data value of the current instruction","D. To store the memory address of the next instruction"},
-        {"Which of the following is NOT a characteristic of a RISC processor?","B. Fixed-length instructions","A. Simple instructions","B. Fixed-length instructions","B. Fixed-length instructions","D. Hardwired control"},
-        {"Which type of memory is the fastest?","Cache memory","Cache memory","Virtual memory","Secondary memory","ROM"},
-        {"What is the purpose of a memory controller?","To manage the flow of data between the CPU and the memory","To manage the flow of data between the CPU and the memory","To manage the flow of data between the input/output devices and the memory","To manage the flow of data between the CPU and the input/output devices","To manage the flow of data between the input/output devices and the CPU"},
-        {"Which of the following is NOT a component of the CPU?","Input/output unit (IOU)","Arithmetic logic unit (ALU)","Control unit (CU)","Input/output unit (IOU)","Registers"},
-        {"Which of the following is an example of a pipelined processor?","Pentium III","Pentium III","Motorola 68000","ARM Cortex-A9","ARM Cortex-A9"},
-        {"Which of the following is NOT a characteristic of a superscalar processor?","Single-issue instructions","Out-of-order execution","Out-of-order execution","Dynamic instruction scheduling","Single-issue instructions"},
-        {"What is the purpose of the memory hierarchy?","To provide a balance between fast and slow storage","To provide a small amount of slow storage","To provide a small amount of slow storage","To provide a balance between fast and slow storage","To provide a large amount of slow storage"},
-        {"Which of the following is a characteristic of a Harvard architecture?","The CPU and memory have separate buses","The CPU and memory share the same bus","The CPU and memory have separate buses","The CPU has multiple cores","The CPU has a large cache"},
-        {"Which of the following is a type of interrupt that occurs when a program executes an illegal instruction or attempts to access an invalid memory address?","Exceptions","Hardware interrupt","Software interrupt","Traps","Exceptions"}
+        {"Identify the best case time complexity of selection sort?","O(n^2)","O(nlogn)","O(n^2)","O(n)","O(1)"},
+        {"Another name of the fractional knapsack is?","Continuous Knapsack Problem","Non-continous knapsack problem","Divisible knapsack problem","0/1 knapsack problem","Continous Knapsack Problem"},
+        {"Identify the approach followed in Floyd Warshall’s algorithm?","Dynamic Programming","Linear programming","Dynamic Programming","Greedy Technique","Backtracking"},
+        {"Hamiltonian path problem is _________?","NP-complete  problem","NP problem","P class problem","NP-complete problem","N class problem"},
+        {"What is the time complexity of the following code snippet in C++?\nvoid solve() {\n    string s = 'scaler';\n    int n = s.size();\n    for(int i = 0; i < n; i++) {\n        s = s + s[i];\n    }\n    cout << s << endl;\n}","O(n^2)","O(n)","O(n^2)","O(1)","O(log n)"},
+        {"When a pop() operation is called on an empty queue, what is the condition called?","Underflow","Overflow","Underflow","Syntax Error","Garbage value"},
+        {"What is the time complexity of the binary search algorithm?","O(log2n)","O(n)","O(1)","O(log2n)","O(n^2)"},
+        {"What will be the best sorting algorithm, given that the array elements are small (<= 1e6)?","Counting Sort","Bubble Sort","Merge Sort","Counting Sort","Heap Sort"},
+        {"What is the time complexity of the Sieve of Eratosthenes to check if a number is prime?","O(nlog(logn))Precomputation,O(1) for check.","O(nlog(logn))Precomputation,O(1) for check.","O(n) Precomputation, O(1) for the check","O(n*logn) Precomputation, O(logn) for check","O(n) Precomputation, O(logn) for check"},
+        {"The worst-case time complexity of Quicksort is?","O(n^2)","O(n)","O(1)","O(log2n)","O(n^2)"}
     };
     
     String[][] Hard_questions = {
-        {"Which of the following is NOT a common technique for reducing instruction execution time?","D) Interrupts","A) Pipelining","B) Instruction-level parallelism","C) Speculative execution","D) Interrupts"},
-        {"Which of the following is NOT a characteristic of a RISC processor?","B) Complex addressing modes","A) Fixed-length instruction format","B) Complex addressing modes","C) Simple instructions","D) Large register file"},
-        {"In a two-level cache hierarchy, which cache is typically smaller and faster?","B) L2 cache","A) L1 cache","B) L2 cache","C) Main memory","D) Virtual memory"},
-        {"Which of the following is NOT a common addressing mode in a processor's instruction set?","C) Indirect with displacement","A) Immediate","B) Direct","C) Indirect with displacement","D) Indirect with index"},
-        {"Which of the following is a potential hazard in pipelined processors?","D) All of the above","A) Resource hazards","B) Structural hazards","C) Data hazards","D) All of the above"},
-        {"What is the purpose of the branch target buffer (BTB) in a processor?","A) To predict the target address of a conditional branch instruction","A) To predict the target address of a conditional branch instruction","B) To store the address of the next instruction to be fetched","C) To buffer the result of an ALU operation","D) To store recently used instructions"},
-        {"Which of the following is NOT a component of a typical instruction execution cycle?","C) Writeback","A) Fetch","B) Decode","C) Writeback","D) Execute"},
-        {"Which of the following cache replacement policies is least likely to cause thrashing?","B) Random","A) Least Recently Used (LRU)","B) Random","C) First-In First-Out (FIFO)","D) Most Recently Used (MRU)"},
-        {"What is the purpose of the translation lookaside buffer (TLB) in a computer system?","C) To map virtual addresses to physical addresses","A) To store recently used data","B) To store recently used instructions","C) To map virtual addresses to physical addresses","D) To buffer data in between the processor and memory"},
-        {"Which of the following is a potential advantage of using SIMD instructions?","D) All of the above","A) Increased parallelism","B) Reduced instruction count","C) Improved cache utilization","D) All of the above"}
+        {"What is the technique called in which it does not require extra memory for carrying out the sorting procedure?","In-place","Stable","Unstable","In-place","In-partition"},
+        {"Identify the slowest sorting technique among the following?","Bubble Sort","Merge Sort","Quick Sort","Bubble Sort","Selection Sort"},
+        {"Select the correct recurrence relation for Tower of Hanoi?","T(N)=2T(N-1)+1","T(N)=2T(N-1)+1","T(N)=2T(N/2)+1","T(N)=2T(N-1)+N","T(N)=2T(N-2)+2"},
+        {"Identify the sorting technique which compares adjacent elements in a list and switches whenever necessary?","Bubble Sort","Merge Sort","Quick Sort","Bubble Sort","Selection Sort"},
+        {"Among the following options which is the best sorting algorithm when the list is already sorted?","Insertion Sort","Merge Sort","Insertion Sort","Bubble Sort","Selection Sort"},
+        {"What is the best case time complexity of the binary search algorithm?","O(1)","O(1)","O(n)","O(log2n)","O(n^2)"},
+        {"Which of the following algorithms are used to find the shortest path from a source node to all other nodes in a weighted graph?","Dijkstra's Algorithm","BFS","Dijkstra's Algorithm","Prims Algorithm","Kruskal's Algorithm"},
+        {"Which of the following are applications of Topological Sort of a graph?","Sentence Ordering","Course Scheduling","Sentence Ordering","OS Deadlock Detection","All of the above"},
+        {"What is the time complexity in decreasing the node value in a binomial heap?","O(logN)","O(1)","O(N)","O(logN)","O(NlogN)"},
+        {"An algorithm is __________?","A procedure for solving a problem","A problem","A procedure for solving a problem","A real-life mathematical problem","None of the above"}
     };
     
     Timer timer;
     
-    public CSE211(){
-        setTitle("Test for CSE211");
-        dlabel = new JLabel("Easy");
+    public CSE408(){
+        setTitle("Test for CSE408");
+                dlabel = new JLabel("Easy");
         dlabel.setForeground(Color.green);
         dlabel.setFont(new Font("Arial", Font.BOLD, 24));
         dlabel.setBounds(830,30,100,50);
@@ -109,13 +109,16 @@ public class CSE211 extends JFrame implements ActionListener{
         
         // Add the question label
         questionLabel = new JTextArea(questions[questionOrder.get(questionIndex)][0]);
-        add(questionLabel);
+//        add(questionLabel);
+        JScrollPane jsp = new JScrollPane(questionLabel);
+        add(jsp);
+        
         questionLabel.setFont(new Font("Arial",Font.BOLD,24));
         questionLabel.setEditable(false);
         questionLabel.setLineWrap(true);
         questionLabel.setWrapStyleWord(true);
         questionLabel.setBackground(null);
-        questionLabel.setBounds(50,80,1200,50);
+        jsp.setBounds(50,80,1400,200);
         
         // Add the answer options
         option1 = new JRadioButton(questions[questionOrder.get(questionIndex)][2]);
@@ -138,10 +141,10 @@ public class CSE211 extends JFrame implements ActionListener{
         option3.setFont(new Font("Arial",Font.BOLD,24));
         option4.setFont(new Font("Arial",Font.BOLD,24));
         
-        option1.setBounds(50,200,1000,30);
-        option2.setBounds(50,270,1000,30);
-        option3.setBounds(50,340,1000,30);
-        option4.setBounds(50,410,1000,30);
+        option1.setBounds(50,350,1000,30);
+        option2.setBounds(50,420,1000,30);
+        option3.setBounds(50,490,1000,30);
+        option4.setBounds(50,560,1000,30);
         
         // Add the submit and reset buttons
         nextButton = new JButton("Next");
@@ -149,19 +152,24 @@ public class CSE211 extends JFrame implements ActionListener{
         nextButton.addActionListener(this);
         resultButton.addActionListener(this);
         
+        dlabel = new JLabel("Easy");
+//        dlabel.setBackground(Color.green);
+//        dlabel.setBounds(500,60,150,50);
+        add(dlabel);
+        
         add(nextButton);
         add(resultButton);
         resultButton.setVisible(false);
         nextButton.setFont(new Font("Arial",Font.BOLD,24));
         resultButton.setFont(new Font("Arial",Font.BOLD,24));
-        nextButton.setBounds(50,480,100,60);
-        resultButton.setBounds(50,480,300,60);
+        nextButton.setBounds(50,630,100,60);
+        resultButton.setBounds(50,630,300,60);
         setVisible(true);
         setSize(1980,1080);
     }
     
     public static void quiz(){
-        frame = new JFrame("Test for CSE211");
+        frame = new JFrame("Test for CSE408");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         label = new JLabel("<html>"
                 + "There will be 10 Questions"
@@ -176,7 +184,7 @@ public class CSE211 extends JFrame implements ActionListener{
         button = new JButton("Next");
         button.addActionListener((ActionEvent e) -> {
             frame.setVisible(false);
-            new CSE211();
+            new CSE408();
         });
         label.setBounds(100,50,1980,200);
         button.setBounds(100,250,100,50);
